@@ -1,43 +1,45 @@
-// Select color input
-// Select size input
+// select sizePicker
+const sizePicker = document.getElementById('sizePicker');
 
-// When size is submitted by the user, call makeGrid()
-const submitButton = $(':submit');
-
-submitButton.on('click', (e) => {
+// add event listener to sizePicke and trigger canvas painting
+sizePicker.addEventListener('submit', (e) => {
   e.preventDefault();
-  makeGrid(setListener);
+  makeGrid();
 });
 
 
-function makeGrid(callback) {
-// Your code goes here!
-    const height = $('#input_height').val();
-    const width = $('#input_width').val();
+// function that creates the table per user's customization
+function makeGrid() {
+    //remove previous table if exists
+    $('#gridTable').remove();
+    const height = document.getElementById('input_height').value;
+    const width = document.getElementById('input_width').value;
 
-    let canvas = "<table id='gridTable'>";
 
+    // create table
+    const table = document.createElement('table');
+    table.id = "gridTable";
+
+    // add rows and columns to the table
     for (let i = 0; i < height; ++i) {
-      let row = "<tr>";
+      const row = table.insertRow(i);
       for (let j = 0; j < width; ++j) {
-        row += "<td></td>";
+        const cell = row.insertCell(j);
+
+        // add event listener to each cell such that
+        // it is fillied with selected color when clicked
+        cell.addEventListener('click', (e) => {
+          changeColor(e);
+        });
       }
-      row += "</tr>";
-      canvas += row;
     }
 
-    if ($('#gridTable') !== null) {
-        $('#gridTable').remove();
-    }
-
-    $('#pixel_canvas').append(canvas);
-    callback();
+    // append the table to the canvas
+    document.getElementById('pixel_canvas').append(table);
 }
 
-const setListener = () => {
-  const canvas = $('#pixel_canvas');
-  canvas.on('click', 'td', (e) => {
-    const color = $('#colorPicker').val();
-    $(e.target).css('background-color', color);
-  });
+// helper module that actually adds event listener to cll
+const changeColor = (e) => {
+  const color = document.getElementById('colorPicker').value;
+  e.target.style.backgroundColor = color;
 }

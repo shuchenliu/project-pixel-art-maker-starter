@@ -1,16 +1,12 @@
 # Pixel Art Maker Project
 
-## Table of Contents
-
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+Author: Shuchen Liu
 
 ## Instructions
 
-To get started, open `designs.js` and start building out the app's functionality.
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Open `index.html` with any modern browser and start creating pixel arts.  
+**Notice**: The height/width of the customized table shall not exceed 100.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is based on the code from [Udacity](https://github.com/udacity/project-pixel-art-maker-starter).
